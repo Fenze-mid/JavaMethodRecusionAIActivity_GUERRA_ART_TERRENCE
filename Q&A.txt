@@ -1,0 +1,21 @@
+PROBLEM 1 
+1. Why does the method need the word double (or a cast) in the return?
+Because both inputs are integers, Java performs integer division and cuts off any decimals (making 5 / 2 equal 2). Casting it to (double) forces Java to keep the decimal places so we get the exact average.
+
+2. What would go wrong without the count <= 0 guard?
+Dividing by zero causes an ArithmeticException crash, or if handled as a double, it outputs Infinity silently without letting you know something went wrong
+
+
+PROBLEM 2 
+1. What does each recursive call do to index, and why must it change?
+It increases the index by 1 (index + 1) each time. It has to change so it moves forward through the array; otherwise, it gets stuck on the same item forever and crashes with a StackOverflowError
+
+2. What happens if you delete the base case entirely?
+The method will keep calling itself infinitely without ever stopping, which blows up the call stack and crashes the program with a StackOverflowError
+
+PROBLEM 3
+1. Why did one wrong return make every result wrong?
+Because factorials depend on a continuous chain of multiplication. Multiplying by 0 at the base case wipes out the entire accumulated product and forces the final result to always be a 0
+
+2. What happens for factorial(-2) with your corrected code, and why?
+It causes infinite recursion because negative numbers move further away from 1 instead of toward it, eventually crashing the program with a StackOverflowError
